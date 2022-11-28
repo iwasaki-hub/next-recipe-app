@@ -1,6 +1,7 @@
 import { PortableText, sanityClient, urlFor } from "../../lib/sanity";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { Image } from "next/image";
 
 const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
     _id,
@@ -47,7 +48,7 @@ export default function OneRecipe({ data, preview }) {
         {likes} 🥰
       </button>
       <main className="content">
-        <img src={urlFor(recipe?.mainImage).url()} alt={recipe.name} />
+        <Image src={urlFor(recipe?.mainImage).url()} alt={recipe.name} />
         <div className="breakdown">
           <ul className="ingredients">
             {recipe.ingredient?.map((ingredient) => (
